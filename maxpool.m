@@ -1,10 +1,6 @@
 function imgg=maxpool(img111)
 
-% I2 = im2double(img111);
-
  img=imresize(img111,[516 768]);
-%  imshow(img)
-
 
  im{1}=img(1:172,1:256);
  im{2}=img(1:172,257:512);
