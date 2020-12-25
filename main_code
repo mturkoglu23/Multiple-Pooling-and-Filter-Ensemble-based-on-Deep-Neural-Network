@@ -48,9 +48,9 @@ rot270= imrotate(img,270);
 end
 labels=imds.Labels; 
 
-c1_r1_res101_Feats=[res101_Feats_mean,res101_Feats_mean1,res101_Feats_mean2,res101_Feats_mean3,res101_Feats_mean4,res101_Feats_mean5];
-c1_r1_res101_Feats1=[res101_Feats_max,res101_Feats_max1,res101_Feats_max2,res101_Feats_max3,res101_Feats_max4,res101_Feats_max5];
-c1_r1=[c1_r1_res101_Feats;c1_r1_res101_Feats1];
+res101_Feats=[res101_Feats_mean,res101_Feats_mean1,res101_Feats_mean2,res101_Feats_mean3,res101_Feats_mean4,res101_Feats_mean5];
+res101_Feats1=[res101_Feats_max,res101_Feats_max1,res101_Feats_max2,res101_Feats_max3,res101_Feats_max4,res101_Feats_max5];
+feats=[res101_Feats;res101_Feats1]';
 
 %% Classification Phase 
 
@@ -62,6 +62,6 @@ t = templateSVM(...
     'KernelScale', 'auto', ...
     'BoxConstraint', 1, ...
     'Standardize', true);
-Md1 = fitcecoc(c1_r1,Y,'Learners',t,'Coding', 'onevsall','Options',options);
+Md1 = fitcecoc(feats,Y,'Learners',t,'Coding', 'onevsall','Options',options);
 CVMd1=crossval(Md1,'KFold',10,'Options',options);
 accuracy=1-kfoldLoss(CVMd1)
