@@ -21,11 +21,7 @@ x1=imresize(im{ii}, [171 255]);
 X=3;Y=3; %window sizes
 fun = @(block_struct) max(block_struct.data(:));
 b1 = blockproc (x1(:,:,1), [X Y], fun);
-% b2 = blockproc (x1(:,:,2), [X Y], fun);
-% b3 = blockproc (x1(:,:,3), [X Y], fun);
 bb(:,:,1)=b1;
-% bb(:,:,2)=b2;
-% bb(:,:,3)=b3;
 img1=bb;
 img1 = ordfilt2(img1,9,ones(3,3));
 im1{ii}=imresize(img1, [172 256]);
