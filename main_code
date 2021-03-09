@@ -11,46 +11,19 @@ for i=1:uzunluk
     i
     img=readimage(imds,i);
        
-hor = flipdim(img ,2);           %# horizontal flip
-ver = flipdim(img ,1);           %# vertical flip
-hor_ver = flipdim(ver,2);    %# horizontal+vertical flip
-rot90= imrotate(img,90);
-rot270= imrotate(img,270);   
    
  im=meanpool(img);
- im1=meanpool(hor);
- im2=meanpool(ver);
- im3=meanpool(hor_ver);
- im4=meanpool(rot90);
- im5=meanpool(rot270);
-
  imm=maxpool(img);
- imm1=maxpool(hor);
- imm2=maxpool(ver);
- imm3=maxpool(hor_ver);
- imm4=maxpool(rot90);
- imm5=maxpool(rot270);
 
-    res101_Feats_mean(:,i) = activations(net,im,layer);
-    res101_Feats_mean1(:,i) = activations(net,im1,layer);
-    res101_Feats_mean2(:,i) = activations(net,im2,layer);
-    res101_Feats_mean3(:,i) = activations(net,im3,layer);
-    res101_Feats_mean4(:,i) = activations(net,im4,layer);
-    res101_Feats_mean5(:,i) = activations(net,im5,layer);
 
+    res101_Feats_mean(:,i) = activations(net,im,layer);   
     res101_Feats_max(:,i) = activations(net,imm,layer);
-    res101_Feats_max1(:,i) = activations(net,imm1,layer);
-    res101_Feats_max2(:,i) = activations(net,imm2,layer);
-    res101_Feats_max3(:,i) = activations(net,imm3,layer);
-    res101_Feats_max4(:,i) = activations(net,imm4,layer);
-    res101_Feats_max5(:,i) = activations(net,imm5,layer);
+    
 
 end
 labels=imds.Labels; 
 
-res101_Feats=[res101_Feats_mean,res101_Feats_mean1,res101_Feats_mean2,res101_Feats_mean3,res101_Feats_mean4,res101_Feats_mean5];
-res101_Feats1=[res101_Feats_max,res101_Feats_max1,res101_Feats_max2,res101_Feats_max3,res101_Feats_max4,res101_Feats_max5];
-feats=[res101_Feats;res101_Feats1]';
+feats=[res101_Feats_mean;res101_Feats_max]';
 
 %% Classification Phase 
 
