@@ -1,3 +1,5 @@
 # Multiple-Pooling-and-Filter-Ensemble-based-on-Deep-Neural-Network
 
 In this study, we propose a Multiple Pooling and Filter approach based on a Deep Neural Network (MPF-DNN) for the classification of texture defects. This model consists of three basic stages: preprocessing, feature extraction, and classification. In the preprocessing stage, the texture images were first divided into 3x3 equal parts. Then, median filtering and pooling processes were applied to each piece prior to performing image merging. For the feature extraction stage, deep features were extracted from the texture images using the pretrained ResNet101 model based on the transfer learning approach. Finally, classification and testing procedures were conducted on the obtained deep-effective properties using the SVM method. The multiclass TILDA dataset was used in order to test the proposed model. In the results obtained from extensive experimental studies, it was observed that the proposed MPF-DNN model was more successful than previous studies that used pretrained deep architectures. 
+
+TILDA dataset dowloand : https://lmb.informatik.uni-freiburg.de/resources/datasets/tilda.en.html
